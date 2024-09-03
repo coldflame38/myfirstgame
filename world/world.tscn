@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cd1yelvb6d8qb"]
+
+[ext_resource type="Texture2D" uid="uid://c1ebivncpt31v" path="res://Robot Warfare Asset Pack 22-11-24/dirt_full_new.png" id="1_lo3jj"]
+[ext_resource type="PackedScene" uid="uid://s60trrt08cj" path="res://world/player.tscn" id="2_o6wyd"]
+
+[node name="World" type="Node2D"]
+
+[node name="dirtTest" type="Sprite2D" parent="."]
+texture_filter = 2
+texture_repeat = 2
+texture = ExtResource("1_lo3jj")
+region_enabled = true
+region_rect = Rect2(0, 0, 4000, 4000)
+
+[node name="Player" parent="." instance=ExtResource("2_o6wyd")]
+position = Vector2(3, 4)
