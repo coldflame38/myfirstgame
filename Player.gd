@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var movespeed = 100.0
 var lastMovement = Vector2.UP
-@onready var sprite = $Sprite2D
+@onready var sprite = $Sprite2d
 @onready var walkTimer = get_node("%walkTimer")
 @onready var idleTimer = get_node("%idleTimer")
 
@@ -17,6 +17,7 @@ func movement():
 		sprite.flip_h = false
 	elif mov.x < 0 :
 		sprite.flip_h = true
+		
 		
 	if mov != Vector2.ZERO:
 		if $AnimationPlayer.get_current_animation() != "walk":

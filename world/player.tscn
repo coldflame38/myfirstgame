@@ -1,72 +1,48 @@
-[gd_scene load_steps=7 format=3 uid="uid://s60trrt08cj"]
+[gd_scene load_steps=6 format=3 uid="uid://s60trrt08cj"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_1syfa"]
-[ext_resource type="Texture2D" uid="uid://bigea8o5nuhwq" path="res://Robot Warfare Asset Pack 22-11-24/Soldiers/Assault-Class.png" id="2_qtvua"]
+[ext_resource type="Texture2D" uid="uid://btb8khucdjgxo" path="res://atm1.png" id="3_k0645"]
 
-[sub_resource type="Animation" id="Animation_3i1mf"]
+[sub_resource type="Animation" id="Animation_i2e5j"]
 resource_name = "idle"
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame_coords")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2i(0, 0), Vector2i(1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_f8dyn"]
-resource_name = "prone"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame_coords")
+tracks/0/path = NodePath("Sprite2d:frame_coords")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Vector2i(0, 2), Vector2i(1, 2)]
+"values": [Vector2i(0, 0), Vector2i(1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_xs6ga"]
+[sub_resource type="Animation" id="Animation_05ijk"]
 resource_name = "walk"
-length = 0.6
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame_coords")
-tracks/0/interp = 0
+tracks/0/path = NodePath("Sprite2d:frame_coords")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Vector2i(0, 1), Vector2i(1, 1)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kw60h"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_at2vu"]
 _data = {
-"idle": SubResource("Animation_3i1mf"),
-"prone": SubResource("Animation_f8dyn"),
-"walk": SubResource("Animation_xs6ga")
+"idle": SubResource("Animation_i2e5j"),
+"walk": SubResource("Animation_05ijk")
 }
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 script = ExtResource("1_1syfa")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(3, 3)
-texture = ExtResource("2_qtvua")
-hframes = 5
-vframes = 7
 
 [node name="walkTimer" type="Timer" parent="."]
 unique_name_in_owner = true
@@ -78,8 +54,14 @@ unique_name_in_owner = true
 wait_time = 0.2
 autostart = true
 
+[node name="Sprite2d" type="Sprite2D" parent="."]
+scale = Vector2(3, 3)
+texture = ExtResource("3_k0645")
+hframes = 2
+vframes = 6
+frame = 2
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_kw60h")
+"": SubResource("AnimationLibrary_at2vu")
 }
