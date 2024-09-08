@@ -6,19 +6,20 @@ var lastMovement = Vector2.UP
 @onready var walkTimer = get_node("%walkTimer")
 @onready var idleTimer = get_node("%idleTimer")
 
+
 func _physics_process(delta):
 	movement()
+	playerRotate()
 
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_mov = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var mov = Vector2(x_mov,y_mov)
-	if mov.x > 0:
-		sprite.flip_h = false
-	elif mov.x < 0 :
-		sprite.flip_h = true
-		
-		
+	#if mov.x > 0:
+		#sprite.flip_h = false
+	#elif mov.x < 0 :
+		#sprite.flip_h = true
+	
 	if mov != Vector2.ZERO:
 		if $AnimationPlayer.get_current_animation() != "walk":
 			$AnimationPlayer.stop()
@@ -30,3 +31,11 @@ func movement():
 		
 	velocity = mov.normalized()*movespeed
 	move_and_slide()
+
+func playerRotate():
+	var mouse_pos = get_global_mouse_position()
+	sprite.flip_h(mouse_pos)
+#if hand > 0:
+		#sprite.flip_h = false
+	#elif hand.x < 0 :
+		#sprite.flip_h = true
