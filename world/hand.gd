@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var child = get_children()[0]
-var max_dist = 10
+var max_dist = 8
 
 func _process(delta):
 	look_at(get_global_mouse_position())

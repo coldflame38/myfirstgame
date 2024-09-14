@@ -15,6 +15,7 @@ func _physics_process(delta):
 	else:
 		movespeed = 50.0
 		$AnimationPlayer.speed_scale = 1.0
+	
 	velocity = lerp(velocity, playerInput * movespeed, delta * accel)
 	move_and_slide()
 
