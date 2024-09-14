@@ -1,14 +1,22 @@
 extends CharacterBody2D
 
-var movespeed = 100.0
-var lastMovement = Vector2.UP
+var movespeed = 50.0
+const accel = 10.0
 @onready var sprite = $Sprite2d
 @onready var walkTimer = get_node("%walkTimer")
 @onready var idleTimer = get_node("%idleTimer")
 
 
 func _physics_process(delta):
-	movement()
+	var playerInput = movement()
+	if Input.is_action_pressed("run"):
+		movespeed = 100.0
+		$AnimationPlayer.speed_scale = 2.0
+	else:
+		movespeed = 50.0
+		$AnimationPlayer.speed_scale = 1.0
+	velocity = lerp(velocity, playerInput * movespeed, delta * accel)
+	move_and_slide()
 
 func movement():
 	var x_mov = Input.get_action_strength("right") - Input.get_action_strength("left")
@@ -28,5 +36,6 @@ func movement():
 			$AnimationPlayer.stop()
 			$AnimationPlayer.play("idle")
 		
-	velocity = mov.normalized()*movespeed
-	move_and_slide()
+	return mov.normalized()
+
+

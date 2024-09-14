@@ -92,6 +92,8 @@ libraries = {
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(6, 6)
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
 
 [node name="bodyColl" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
