@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://4egh45mlvpjq"]
+
+[ext_resource type="Script" path="res://world/hand.gd" id="1_y6tgd"]
+[ext_resource type="Texture2D" uid="uid://blqptwy6h326c" path="res://Robot Warfare Asset Pack 22-11-24/Soldiers/hand.png" id="2_itvd1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwto2"]
+radius = 2.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t46xr"]
+radius = 8.0
+
+[node name="hand" type="Area2D" groups=["attack"]]
+collision_layer = 20
+collision_mask = 21
+collision_priority = 10.0
+script = ExtResource("1_y6tgd")
+
+[node name="handcollide" type="CollisionShape2D" parent="."]
+position = Vector2(7, 2)
+shape = SubResource("CircleShape2D_nwto2")
+
+[node name="hand" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(7, 2)
+rotation = 1.5708
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_itvd1")
+
+[node name="handHit" type="Area2D" parent="hand"]
+collision_layer = 4
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand/handHit"]
+shape = SubResource("CircleShape2D_t46xr")
+debug_color = Color(0.948794, 0.0933444, 0.517177, 0.42)
+
+[connection signal="area_entered" from="hand/handHit" to="." method="_on_hand_hit_area_entered"]
+[connection signal="body_entered" from="hand/handHit" to="." method="_on_hand_hit_body_entered"]

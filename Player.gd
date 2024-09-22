@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var movespeed = 50.0
+var health = 50
 const accel = 10.0
 @onready var sprite = $Sprite2d
 @onready var walkTimer = get_node("%walkTimer")

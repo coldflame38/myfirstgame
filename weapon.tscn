@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cpw63wom3nwsq"]
+
+[ext_resource type="Script" path="res://weapon.gd" id="1_6ck86"]
+[ext_resource type="Texture2D" uid="uid://c2qksbkmfqoi1" path="res://Robot Warfare Asset Pack 22-11-24/Weapons/100 Guns by Mikiz/77.png" id="1_b2ibm"]
+
+[node name="Weapon" type="Node2D"]
+script = ExtResource("1_6ck86")
+
+[node name="AR" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_b2ibm")

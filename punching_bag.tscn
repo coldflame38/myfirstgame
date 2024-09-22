@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d0vi3rrf3887n"]
+
+[ext_resource type="Script" path="res://punching_bag.gd" id="1_cv14p"]
+[ext_resource type="Texture2D" uid="uid://bqttcfvyk52n4" path="res://Robot Warfare Asset Pack 22-11-24/Robots/Centipede.png" id="1_hev7i"]
+[ext_resource type="PackedScene" uid="uid://b0nlcka5sjxla" path="res://hurtbox.tscn" id="3_kpi67"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fvd4r"]
+radius = 4.0
+height = 10.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nylct"]
+radius = 5.0
+
+[node name="Punching bag" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 31
+script = ExtResource("1_cv14p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("1_hev7i")
+hframes = 8
+vframes = 18
+
+[node name="collbox" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_fvd4r")
+
+[node name="Hurtbox" parent="." instance=ExtResource("3_kpi67")]
+collision_layer = 16
+collision_mask = 36
+
+[node name="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CircleShape2D_nylct")
+debug_color = Color(0.942127, 0.120271, 0.522503, 0.42)
+
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+
+[editable path="Hurtbox"]

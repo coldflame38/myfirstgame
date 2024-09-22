@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://cd1yelvb6d8qb"]
+[gd_scene load_steps=9 format=3 uid="uid://cd1yelvb6d8qb"]
 
 [ext_resource type="Texture2D" uid="uid://bsl4dxkbb3svo" path="res://Robot Warfare Asset Pack 22-11-24/Obstacles and Objects/obstacles-and-objects.png" id="2_lxfrv"]
 [ext_resource type="PackedScene" uid="uid://s60trrt08cj" path="res://world/player.tscn" id="2_o6wyd"]
 [ext_resource type="Texture2D" uid="uid://chajcpdw8lagv" path="res://Robot Warfare Asset Pack 22-11-24/Tileset/tileset_arranged.png" id="3_xntp2"]
+[ext_resource type="PackedScene" uid="uid://cpw63wom3nwsq" path="res://weapon.tscn" id="4_vruks"]
+[ext_resource type="PackedScene" uid="uid://d0vi3rrf3887n" path="res://punching_bag.tscn" id="5_j212a"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dle81"]
 texture = ExtResource("3_xntp2")
@@ -874,6 +876,7 @@ texture = ExtResource("2_lxfrv")
 
 [sub_resource type="TileSet" id="TileSet_630rr"]
 physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 7
 sources/0 = SubResource("TileSetAtlasSource_dle81")
 sources/1 = SubResource("TileSetAtlasSource_4x8u1")
 
@@ -892,3 +895,9 @@ layer_1/tile_data = PackedInt32Array(-1245206, 1, 8, -1179670, 917505, 10, -1245
 
 [node name="Player" parent="." instance=ExtResource("2_o6wyd")]
 position = Vector2(3, 4)
+
+[node name="Weapon" parent="." instance=ExtResource("4_vruks")]
+position = Vector2(56, -25)
+
+[node name="Punching bag" parent="." instance=ExtResource("5_j212a")]
+position = Vector2(131, 4)
